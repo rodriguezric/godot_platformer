@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dev7qawg8oj7c"]
+
+[ext_resource type="Texture2D" uid="uid://rjtpci7itkcj" path="res://gfx/objects/ladder.png" id="1_damyo"]
+[ext_resource type="Script" path="res://objs/ladder.gd" id="1_g0qgn"]
+[ext_resource type="Script" path="res://objs/ladder_top.gd" id="3_afrk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkwrv"]
+size = Vector2(16, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4i5i8"]
+size = Vector2(20, 2)
+
+[node name="Ladder" type="Sprite2D"]
+texture_repeat = 2
+position = Vector2(152, 112)
+texture = ExtResource("1_damyo")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 64)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_g0qgn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_lkwrv")
+
+[node name="LadderTop" type="StaticBody2D" parent="."]
+script = ExtResource("3_afrk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderTop"]
+position = Vector2(0, -31)
+shape = SubResource("RectangleShape2D_4i5i8")
+one_way_collision = true
